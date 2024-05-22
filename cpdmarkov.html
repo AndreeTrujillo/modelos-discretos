@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de Proceso de Decisión de Markov</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Calculadora de Proceso de Decisión de Markov</h1>
+        <form method="post">
+            <div class="mb-3">
+                <label for="rewards" class="form-label">Recompensas (separadas por espacios y nuevas líneas):</label>
+                <textarea class="form-control" id="rewards" name="rewards" rows="5" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="transitions" class="form-label">Probabilidades de Transición (separadas por espacios, nuevas líneas y punto y coma para separar acciones):</label>
+                <textarea class="form-control" id="transitions" name="transitions" rows="5" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="gamma" class="form-label">Factor de Descuento (gamma):</label>
+                <input type="number" step="0.01" class="form-control" id="gamma" name="gamma" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Calcular</button>
+        </form>
+        {% if policy is not none and value_function is not none %}
+            <div class="mt-4">
+                <h2>Resultado:</h2>
+                <p>Política Óptima: {{ policy }}</p>
+                <p>Función de Valor: {{ value_function }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
